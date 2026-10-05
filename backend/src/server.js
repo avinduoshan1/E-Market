@@ -34,7 +34,7 @@ app.get("/api/products", async (req, res) => {
 res.json(products);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: "Products ලබාගැනීමට නොහැකි වුණා." });
+    res.status(500).json({ message: "Can't Get Products ." });
   }
 });
 

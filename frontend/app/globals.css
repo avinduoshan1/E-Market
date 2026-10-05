@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+/* Brand palette — pulled from the Lanka Women lotus logo */
+:root {
+  --background: #fdf7ee;
+  --foreground: #1e2029;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-ink: #1e2029;
+  --color-cream: #fdf7ee;
+  --color-sand: #f6ead6;
+  --color-magenta: #c8336f;
+  --color-magenta-dark: #a3245a;
+  --color-saffron: #ee7d2b;
+  --color-turmeric: #f4b93e;
+  --color-leaf: #4f9a52;
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-playfair);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+}
+
+/* Soft gradient mesh used behind the hero */
+.bg-mesh {
+  background-color: var(--background);
+  background-image:
+    radial-gradient(at 8% 12%, rgb(238 125 43 / 0.26) 0, transparent 42%),
+    radial-gradient(at 92% 6%, rgb(200 51 111 / 0.24) 0, transparent 44%),
+    radial-gradient(at 62% 92%, rgb(244 185 62 / 0.32) 0, transparent 48%),
+    radial-gradient(at 4% 88%, rgb(79 154 82 / 0.18) 0, transparent 42%),
+    radial-gradient(at 48% 40%, rgb(255 255 255 / 0.7) 0, transparent 55%);
+}
+
+/* Frosted glass surface (in components layer so utilities can override) */
+@layer components {
+  .glass {
+    background: rgb(255 255 255 / 0.55);
+    backdrop-filter: blur(18px) saturate(160%);
+    -webkit-backdrop-filter: blur(18px) saturate(160%);
+    border: 1px solid rgb(255 255 255 / 0.75);
+    box-shadow: 0 12px 40px -14px rgb(30 32 41 / 0.22);
+  }
+}
+
+.text-gradient-brand {
+  background-image: linear-gradient(100deg, #c8336f 0%, #ee7d2b 55%, #f4b93e 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float {
+    animation: none;
+  }
+}
